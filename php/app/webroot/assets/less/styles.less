@@ -1,0 +1,210 @@
+/*
+ * Styles.less
+ * 
+ * @author Antonio Rizzo <info@antoniorizzo.com>
+ */
+ 
+ 
+// Less files
+@import 'normalize.less';
+@import 'lesshat-prefixed.less';
+@import 'grid-less/grid.pack.less';
+
+// Fonts
+@import url('http://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic');
+
+
+
+/* --------------------------------------------- *\
+ *
+ * VARS
+ *
+\* --------------------------------------------- */
+
+
+// Grid
+
+@min-width: 						320px;
+@max-width: 						1140px;
+@gutter: 							30px;
+
+
+// Type
+
+@baseFontSize:    					18;
+@baseLine:        					26;
+			
+@baseFontFamily: 					'PT Sans', Helvetica, Arial, sans-serif;
+@headingsFontFamily: 				'Montserrat', Helvetica, Arial, sans-serif;
+			
+@baseFontColor:						#444444;
+@headingsFontColor:					#333333;
+@baseLinkColor:						#2D87BB;
+			
+@h1Factor:							8;
+@h2Factor:							6;
+@h3Factor:							4;
+@h4Factor:							2;
+@pFactor:							0;
+			
+@primaryColor:						#2B9A79;
+@secondaryColor:					#DC7749;
+
+
+// Normalize
+
+@linkColor:							@baseLinkColor;
+
+
+
+/* --------------------------------------------- *\
+ *
+ * MIXINS
+ *
+\* --------------------------------------------- */
+
+
+
+.arrowBottom(@color: #FFFFFF)		{position: absolute; left: 50%; top: 100%; margin-left: -11px; border-top: 15px solid @color; border-right: 11px solid transparent; border-left: 11px solid transparent; content: '';}
+.arrowLeft(@color: #FFFFFF)			{position: absolute; top: 50%; left: 0px; margin-top: -11px; border-left: 15px solid @color; border-top: 11px solid transparent; border-bottom: 11px solid transparent; content: '';}
+.arrowRight(@color: #FFFFFF)		{position: absolute; top: 50%; right: 0px; margin-top: -11px; border-right: 15px solid @color; border-top: 11px solid transparent; border-bottom: 11px solid transparent; content: '';}
+.arrowTop(@color: #FFFFFF)			{position: absolute; left: 50%; bottom: 100%; margin-left: -11px; border-bottom: 15px solid @color; border-right: 11px solid transparent; border-left: 11px solid transparent; content: '';}
+
+.clearFix()							{&:after{content: ''; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;}}
+
+
+
+/* --------------------------------------------- *\
+ *
+ * BASIC
+ *
+\* --------------------------------------------- */
+
+
+
+// Everything should be border-box
+
+* 									{.lh-box-sizing(border-box);}
+
+
+// Tags
+
+label 								{margin: 0;}
+button, input 						{.lh-appearance(); border: none; outline: none;}
+input 								{width: 100%; border-bottom: 1px solid #EEEEEE;}
+input[type=submit] 					{width: auto;}
+table								{width: 100%;}
+
+
+// Layout
+
+.site 								{position: relative;}
+.site-header 						{}
+.site-sidebar 						{position: fixed; top: 0px; left: -240px; bottom: 0px; width: 240px; background-color: #282828;}
+.site-content 						{}
+.site-container 					{.container();}
+.site-footer 						{}
+
+@media @tablet-portrait {
+
+	.site-sidebar 					{left: 0px;}
+	.site-content 					{margin-left: 240px;}
+
+}
+
+
+
+/* --------------------------------------------- *\
+ *
+ * MODULES
+ *
+\* --------------------------------------------- */
+
+
+
+// Page
+
+.page								{.col(); .paddingTop(2);}
+.page-header 						{.paddingBottom(1); border-bottom: 1px solid #DDDDDD; margin: 0px;}
+.page-image							{.lh-border-radius(50%); .marginRight(0, .5); display: inline-block; vertical-align: middle;}
+
+
+// Nav
+
+.nav								{}
+.nav a								{.box(.4); .paddingLeft(1); display: block; color: #EEEEEE; text-decoration: none;}
+.nav .current a						{position: relative; background-color: #222222;}
+.nav .current a:after 				{.arrowRight();}
+.nav-section						{.box(.4); background-color: #111111; color: #FFFFFF; text-align: center;}
+
+
+// Button
+
+.btn {
+	.lh-border-radius(4px);
+	.height(1.6);
+	.box(.3);
+	.paddingLeft(.6);
+	.paddingRight(.6);
+	.lineHeight(1);
+
+	float: left;
+
+	background-color: #333333;
+	border-bottom: 2px solid #222222;
+	color: #FFFFFF;
+
+	font-family: @headingsFontFamily;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.btn-primary 						{background-color: @primaryColor; border-bottom-color: darken(spin(@primaryColor, 20%), 10%);}
+
+@media @tablet-portrait {
+
+	.btn 							{.height(2); .box(.5); .paddingLeft(1); .paddingRight(1);}
+
+}
+
+
+// Form & Controls
+
+.form 								{.clearFix(); .paddingBottom(2);}
+.form-actions 						{.paddingTop(1);}
+.form-actions .btn 					{.marginRight(0, .5);}
+
+.control-label 						{.paddingTop(1); .paddingBottom(.5); .lineHeight(0, 1.5); display: block;}
+.controls input 					{.lineHeight(0, 1.5);}
+
+@media @tablet-portrait {
+
+	.control-label,
+	.controls,
+	.form-actions 					{.paddingTop(2); .paddingBottom(0);}
+
+	.control-label 					{.col(25%); text-align: right;}
+	.controls, .form-actions 		{.col(75%, true); .paddingLeft(1); border-left: 1px solid #DDDDDD;}
+
+	.form-actions 					{margin-left: 25%;}
+
+}
+
+
+// Icon
+
+.icon 								{.marginRight(0, .5); display: inline-block; vertical-align: middle;}
+
+
+// Table
+
+.table								{}
+.table thead						{text-align: left;}
+.table tr							{border-bottom: 1px solid #EEEEEE;}
+.table td, .table th				{.paddingTop(.5); .paddingBottom(.5);}
+
+
+
+
+

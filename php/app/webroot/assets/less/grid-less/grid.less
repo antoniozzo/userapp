@@ -1,0 +1,52 @@
+/*
+ * Grid-Less v1.2
+ *
+ * Copyright 2013, Antonio Rizzo
+ * Free to use and abuse under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ *
+ */
+
+
+
+// Container
+
+.container(@width: @max-width)
+{
+	margin: 0 auto;
+	padding-left: @gutter;
+	max-width: @width - @gutter;
+	min-width: @min-width - @gutter;
+	
+	&:after
+	{
+		content: '';
+		display: block;
+		clear: both;
+		visibility: hidden;
+		line-height: 0;
+		height: 0;
+	}
+}
+
+
+
+// Columns
+
+.col(@percent: 100%)
+{
+	position: relative;
+	float: left;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding-right: @gutter;
+	width: @percent;
+	min-height: 1px;
+}
+
+.col(@percent, true)
+{
+	.col(@percent);
+	padding-right: 0px;
+}
