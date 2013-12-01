@@ -1,6 +1,6 @@
 <?php echo $this->Session->flash('auth'); ?>
 
-<?php echo $this->Form->create('User', array('class' => 'form')); ?>
+<?php echo $this->Form->create('User', array('class' => 'form', 'type' => 'file')); ?>
 
 	<div class="control-group">
         <?php
