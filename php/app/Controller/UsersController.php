@@ -82,13 +82,18 @@ class UsersController extends AppController {
 	 */
 	public function edit($id = null)
 	{
+		$user_id = $this->Auth->user('id');
+
 		if ($this->request->is('post')) {
 
 			// inject logged in user id
-			$this->request->data['User']['id'] = $this->Auth->user('id');
+			$this->request->data['User']['id'] = $user_id;
 			
 			// update user
 			if ($this->User->save($this->request->data)) {
+
+				// update session data
+				$this->Session->write('Auth', $this->User->read(null, $user_id));
 
 				// redirect to view on success
 				return $this->redirect(array('controller' => 'users', 'action' => 'view'));
@@ -100,6 +105,13 @@ class UsersController extends AppController {
 			
 			}
 		}
+
+		// Default user data
+		$this->request->data = $this->User->find('first', array(
+			'conditions' => array(
+				'User.id' => $user_id
+			)
+		));
 
 		$this->set('title_for_layout', 'Settings');
 		$this->set('icon_for_layout', 'edit-b');
@@ -152,7 +164,7 @@ class UsersController extends AppController {
 	public function logout()
 	{
 		$this->Session->destroy();		
-		$this->redirect($this->Auth->logout());
+		return $this->redirect($this->Auth->logout());
 	}
 
 	/**
@@ -169,6 +181,9 @@ class UsersController extends AppController {
 			
 			// save user with data
 			if ($this->User->save($this->request->data)) {
+
+				// display a success message
+				$this->Session->setFlash(__('You have registered and can now login with your email and password.'));
 
 				// redirect to login on success
 				return $this->redirect(array('controller' => 'users', 'action' => 'login'));

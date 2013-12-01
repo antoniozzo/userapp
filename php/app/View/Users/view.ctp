@@ -4,7 +4,7 @@
 <table class="table">
 	<thead>
 		<tr>
-			<th><?php echo __('Last logins'); ?></th>
+			<th><?php echo __('Latest logins'); ?></th>
 			<th><?php echo __('Timestamp'); ?></th>
 		<tr>
 	</thead>

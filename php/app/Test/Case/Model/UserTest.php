@@ -33,21 +33,31 @@ class UserTest extends CakeTestCase {
 	{
 		// create a new user
 		$this->User->create();
-		$user = $this->User->save(array('email' => 'info@antoniorizzo.com', 'password' => 'test'));
-
-		// assert that the user has been created
+		$user = $this->User->save(array('email' => 'info@antoniorizzo.com', 'password' => 'test', 'password_confirm' => 'test'));
 		$this->assertInternalType('array', $user);
 	}
 
 	// emails must be unique
 	public function testEmailShouldBeUnique()
 	{
-		// create a new user
+		// create a new user with existing email
 		$this->User->create();
-		$user = $this->User->save(array('email' => 'harry@potter', 'password' => 'ilovelucious'));
-
-		// assert false
+		$user = $this->User->save(array('email' => 'harry@potter', 'password' => 'voldemort', 'password_confirm' => 'voldemort'));
 		$this->assertFalse($user);
+	}
+
+	// test that password matches password_confirm
+	public function testPasswordConfirmation()
+	{
+		// create a new user with wrong password_confirm
+		$this->User->create();
+		$user = $this->User->save(array('email' => 'info@antoniorizzo.com', 'password' => 'pass', 'password_confirm' => 'nothing'));
+		$this->assertFalse($user);
+
+		// create a new user with correct password_confirm
+		$this->User->create();
+		$user = $this->User->save(array('email' => 'info@antoniorizzo.com', 'password' => 'pass', 'password_confirm' => 'pass'));
+		$this->assertInternalType('array', $user);
 	}
 
 }

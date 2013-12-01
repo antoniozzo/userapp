@@ -42,9 +42,9 @@
 @headingsFontColor:					#333333;
 @baseLinkColor:						#2D87BB;
 			
-@h1Factor:							8;
-@h2Factor:							6;
-@h3Factor:							4;
+@h1Factor:							5;
+@h2Factor:							4;
+@h3Factor:							3;
 @h4Factor:							2;
 @pFactor:							0;
 			
@@ -96,6 +96,8 @@ input 								{width: 100%; border-bottom: 1px solid #EEEEEE;}
 input[type=submit] 					{width: auto;}
 table								{width: 100%;}
 
+h1, h2, h3							{text-transform: uppercase;}
+
 
 // Layout
 
@@ -123,6 +125,10 @@ table								{width: 100%;}
 \* --------------------------------------------- */
 
 
+// Message / Flash
+
+.message							{.box(1); border-bottom: 1px solid #DDDDDD; margin: 0px; text-align: center;}
+
 
 // Icon
 
@@ -146,12 +152,16 @@ table								{width: 100%;}
 // Page
 
 .page								{.col(); .paddingTop(2);}
-.page-header 						{.paddingBottom(1); border-bottom: 1px solid #DDDDDD; margin: 0px;}
-.page-image							{.lh-border-radius(50%); .marginRight(0, .5); display: inline-block; vertical-align: middle; width: 60px;}
+.page-header 						{.paddingBottom(1); display: table; width: 100%; border-bottom: 1px solid #DDDDDD; margin: 0px;}
+.page-image, .page-title			{display: inline-block; display: table-cell; vertical-align: middle;}
+.page-image							{width: 60px;}
+.page-image img						{.lh-border-radius(50%); .marginRight(0, .5); width: 60px;}
+
+.page-header .icon					{display: inline-block; display: table-cell; vertical-align: middle; width: 45px;}
 
 @media @tablet-portrait {
 
-	.page-image 					{width: 120px;}
+	.page-image img  				{width: 120px;}
 
 }
 
@@ -159,8 +169,8 @@ table								{width: 100%;}
 // Nav
 
 .nav								{}
-.nav a								{.box(.4); .paddingLeft(1); display: block; color: #EEEEEE; text-decoration: none;}
-.nav .current a						{position: relative; background-color: #222222;}
+.nav a								{.box(.4); .paddingLeft(1); display: block; color: #DDDDDD; text-decoration: none;}
+.nav .current a						{position: relative; background-color: #222222; color: #FFFFFF;}
 .nav-section						{.box(.4); background-color: #111111; color: #FFFFFF; text-align: center;}
 
 @media @tablet-portrait {
@@ -223,6 +233,8 @@ table								{width: 100%;}
 .control-group						{.clearFix();}
 .control-label 						{.paddingTop(1); .paddingBottom(.5); .lineHeight(0, 1.5); display: block;}
 .controls input 					{.height(1.5); .lineHeight(0, 1.5);}
+
+.error-message						{.paddingTop(.2); font-style: italic;}
 
 @media @tablet-portrait {
 
