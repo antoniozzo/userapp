@@ -660,6 +660,7 @@ h3 {
   background-clip: padding-box;
   margin-right: 0.7222222222222222em;
   width: 60px;
+  border: 1px solid #EEEEEE;
 }
 .page-header .icon {
   display: inline-block;
