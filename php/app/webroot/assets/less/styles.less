@@ -48,7 +48,7 @@
 @h4Factor:							2;
 @pFactor:							0;
 			
-@primaryColor:						#2B9A79;
+@primaryColor:						#2EBF7A;
 @secondaryColor:					#DC7749;
 
 
@@ -99,8 +99,8 @@ table								{width: 100%;}
 
 // Layout
 
-.site 								{position: relative;}
-.site-header 						{}
+.site 								{.paddingTop(2); position: relative;}
+.site-header 						{.box(.5); position: fixed; z-index: 9; top: 0px; left: 0px; right: 0px; background-color: @primaryColor; border-bottom: 2px solid darken(spin(@primaryColor, 20%), 10%); text-align: right;}
 .site-sidebar 						{position: fixed; top: 0px; left: -240px; bottom: 0px; width: 240px; background-color: #282828;}
 .site-content 						{}
 .site-container 					{.container();}
@@ -108,7 +108,8 @@ table								{width: 100%;}
 
 @media @tablet-portrait {
 
-	.site-sidebar 					{left: 0px;}
+	.site-header					{text-align: center;}
+	.site-sidebar 					{.top(2); left: 0px;}
 	.site-content 					{margin-left: 240px;}
 
 }
@@ -123,11 +124,36 @@ table								{width: 100%;}
 
 
 
+// Icon
+
+.icon 								{.marginRight(0, .5); display: inline-block; vertical-align: middle;}
+
+
+// Brand
+
+.brand								{.fontSize(-2); .lineHeight(-2); color: #FFFFFF; font-family: @headingsFontFamily; font-weight: @headingsFontWeight;}
+.brand small						{display: none; color: darken(spin(@primaryColor, 20%), 20%); font-weight: @baseFontWeight;}
+.brand small a						{color: darken(spin(@primaryColor, 20%), 20%); text-decoration: none; border-bottom: 1px dotted darken(spin(@primaryColor, 20%), 20%);}
+
+@media @tablet-portrait {
+
+	.brand							{.fontSize(-2); .lineHeight(-2);}
+	.brand small					{display: inline;}
+
+}
+
+
 // Page
 
 .page								{.col(); .paddingTop(2);}
 .page-header 						{.paddingBottom(1); border-bottom: 1px solid #DDDDDD; margin: 0px;}
-.page-image							{.lh-border-radius(50%); .marginRight(0, .5); display: inline-block; vertical-align: middle;}
+.page-image							{.lh-border-radius(50%); .marginRight(0, .5); display: inline-block; vertical-align: middle; width: 60px;}
+
+@media @tablet-portrait {
+
+	.page-image 					{width: 120px;}
+
+}
 
 
 // Nav
@@ -135,8 +161,27 @@ table								{width: 100%;}
 .nav								{}
 .nav a								{.box(.4); .paddingLeft(1); display: block; color: #EEEEEE; text-decoration: none;}
 .nav .current a						{position: relative; background-color: #222222;}
-.nav .current a:after 				{.arrowRight();}
 .nav-section						{.box(.4); background-color: #111111; color: #FFFFFF; text-align: center;}
+
+@media @tablet-portrait {
+
+	.nav .current a:after 			{.arrowRight();}
+
+}
+
+
+// Sidebar toggle
+
+.toggle								{position: absolute; .top(.5); .left(.5); text-align: left; text-indent: -9999px;}
+.site.nav-open,
+.nav-open .site-header 				{left: 240px; right: -240px;}
+.nav-open .site-sidebar  			{left: 0px;}
+
+@media @tablet-portrait {
+
+	.toggle 						{display: none;}
+
+}
 
 
 // Button
@@ -175,8 +220,9 @@ table								{width: 100%;}
 .form-actions 						{.paddingTop(1);}
 .form-actions .btn 					{.marginRight(0, .5);}
 
+.control-group						{.clearFix();}
 .control-label 						{.paddingTop(1); .paddingBottom(.5); .lineHeight(0, 1.5); display: block;}
-.controls input 					{.lineHeight(0, 1.5);}
+.controls input 					{.height(1.5); .lineHeight(0, 1.5);}
 
 @media @tablet-portrait {
 
@@ -190,11 +236,6 @@ table								{width: 100%;}
 	.form-actions 					{margin-left: 25%;}
 
 }
-
-
-// Icon
-
-.icon 								{.marginRight(0, .5); display: inline-block; vertical-align: middle;}
 
 
 // Table

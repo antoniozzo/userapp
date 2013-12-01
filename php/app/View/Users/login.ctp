@@ -32,7 +32,6 @@
         
     <div class="form-actions">
 		<?php echo $this->Form->submit(__('Login'), array('class' => 'btn btn-primary', 'div' => false)); ?>
-		<?php echo $this->Html->link(__('Register'), array('action' => 'register'), array('class' => 'btn btn-secondary')); ?>
 	</div>
 	
 <?php echo $this->Form->end(); ?>

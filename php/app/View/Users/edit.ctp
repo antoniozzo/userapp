@@ -11,7 +11,7 @@
 	        	'label' => false,
 	        	'div' => 'controls',
 	        	'class' => 'input',
-	        	'placeholder' => 'Enter your first name'
+	        	'placeholder' => 'Update your first name'
 	        ));
 	    ?>
 	</div>
@@ -25,7 +25,7 @@
 	        	'label' => false,
 	        	'div' => 'controls',
 	        	'class' => 'input',
-	        	'placeholder' => 'Enter your last name'
+	        	'placeholder' => 'Update your last name'
 	        ));
 	    ?>
 	</div>

@@ -71,7 +71,7 @@ class UsersController extends AppController {
 		$this->set('title_for_layout', $user['User']['full_name']);
 
 		if ($user['User']['image']) {
-			$this->set('image_for_layout', '/files/user/' . $user['User']['id'] . '/thumb_' . $user['User']['image']);
+			$this->set('image_for_layout', '/files/user/image/' . $user['User']['id'] . '/thumb_' . $user['User']['image']);
 		}
 	}
 
@@ -180,5 +180,8 @@ class UsersController extends AppController {
 			
 			}
 		}
+
+		$this->set('title_for_layout', 'Register');
+		$this->set('icon_for_layout', 'edit-b');
 	}
 }
