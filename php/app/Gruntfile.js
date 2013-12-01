@@ -23,7 +23,7 @@ module.exports = function (grunt) {
 
 			js: {
 				base: '<%= options.assets %>/js',
-				files: ['<%= options.js.base %>/scripts.js'],
+				files: ['<%= options.js.base %>/modernizr.min.js', '<%= options.js.base %>/scripts.js'],
 				concat: '<%= options.js.base %>/concat.js',
 				min: '<%= options.publish %>/scripts.min.js'
 			},
@@ -32,6 +32,11 @@ module.exports = function (grunt) {
 				base: '<%= options.assets %>/less',
 				file: '<%= options.less.base %>/styles.less',
 				compiled: '<%= options.css.base %>/styles.css'
+			},
+
+			legacssy: {
+				file: '<%= options.publish %>/styles.min.css',
+				compiled: '<%= options.publish %>/styles.ie.css'
 			},
 
 			php: {
@@ -68,7 +73,7 @@ module.exports = function (grunt) {
 					stripBanners: true
 				},
 				files: {
-					'<%= options.js.concat %>' : '<%= options.js.files %>',
+					'<%= options.js.concat %>' : ['<%= options.js.files %>'],
 				}
 			}
 		},
@@ -140,6 +145,14 @@ module.exports = function (grunt) {
 			}
 		},
 
+		legacssy: {
+            ie8: {
+                files: {
+                    '<%= options.legacssy.compiled %>': ['<%= options.legacssy.file %>'],
+                }
+            }
+        },
+
 		watch: {
 			scripts: {
 				files: ['<%= options.svg.files %>', '<%= options.js.files %>', '<%= options.less.base %>/*.less', '!<%= options.js.min %>', '!<%= options.less.compiled %>'],
@@ -163,7 +176,8 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('dr-grunt-svg-sprites');
+	grunt.loadNpmTasks('grunt-legacssy');
 
 	grunt.registerTask('default', 'watch');
-	grunt.registerTask('scripts', ['clean:all', 'svg-sprites', 'less', 'concat:css', 'concat:js', 'cssmin', 'uglify', 'clean:concat']);
+	grunt.registerTask('scripts', ['clean:all', 'svg-sprites', 'less', 'concat:css', 'concat:js', 'cssmin', 'legacssy', 'uglify', 'clean:concat']);
 }

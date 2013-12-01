@@ -7,17 +7,22 @@
 
 	<title><?php echo $title_for_layout; ?></title>
 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<meta name="description" content="A simple user application">
+	<meta name="author" content="Antonio Rizzo">
+
 	<?php
 		$this->Html->meta('favicon.png', '/favicon.png', array('type' => 'icon', 'inline' => false));
-		$this->Html->meta('viewport', 'width=device-width, initial-scale=1.0', array('inline' => false));
-		$this->Html->meta('description', 'A simple user application', array('inline' => false));
-		$this->Html->meta('author', 'Antonio Rizzo', array('inline' => false));
 		
 		$this->Html->css('/styles.min', null, array('inline' => false));
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 	?>
+
+	<!--[if (gte IE 6)&(lte IE 8)]>
+		<link rel="stylesheet" href="/styles.ie.css" />
+	<![endif]-->
 
 </head>
 
@@ -26,6 +31,17 @@
 	<div class="site">
 
 		<header class="site-header" role="banner">
+			<div class="brand">
+				<?php echo __('A simple user application'); ?>
+				<small>
+					<?php
+						echo __('by') . ' ' . $this->Html->link('Antonio Rizzo', 'https://github.com/antoniozzo', array(
+							'target' => '_blank'
+						));
+					?>
+				</small>
+			</div>
+			<a href="#" class="icon toggle toggle-medium">Menu</a>
 		</header>
 
 		<aside class="site-sidebar">
