@@ -13,17 +13,6 @@ class UsersController extends AppController {
 	public $uses = array('User', 'Login');
 
 	/**
-	 * isAuthorized method
-	 *
-	 * @param array
-	 * @return bool
-	 */
-	public function isAuthorized($user) 
-	{
-    	return parent::isAuthorized($user);
-	}
-
-	/**
 	 * beforeFilter method
 	 *
 	 * @return void
@@ -84,7 +73,7 @@ class UsersController extends AppController {
 	{
 		$user_id = $this->Auth->user('id');
 
-		if ($this->request->is('post')) {
+		if ($this->request->is('post') || $this->request->is('put')) {
 
 			// inject logged in user id
 			$this->request->data['User']['id'] = $user_id;
@@ -94,6 +83,9 @@ class UsersController extends AppController {
 
 				// update session data
 				$this->Session->write('Auth', $this->User->read(null, $user_id));
+
+				// success mesasge
+				$this->Session->setFlash(__('You information has been updated'));
 
 				// redirect to view on success
 				return $this->redirect(array('controller' => 'users', 'action' => 'view'));
