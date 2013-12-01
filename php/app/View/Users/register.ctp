@@ -1,34 +1,6 @@
 <?php echo $this->Session->flash('auth'); ?>
 
 <?php echo $this->Form->create('User', array('class' => 'form')); ?>
-	
-	<div class="control-group">
-        <?php
-        	echo $this->Form->label('email', 'Email', array(
-        		'class' => 'control-label'
-        	));
-	        echo $this->Form->input('email', array(
-	        	'label' => false,
-	        	'div' => 'controls',
-	        	'class' => 'input',
-	        	'placeholder' => 'Enter your email'
-	        ));
-	    ?>
-	</div>
-	    
-	<div class="control-group">
-        <?php
-        	echo $this->Form->label('password', 'Password', array(
-        		'class' => 'control-label'
-        	));
-	        echo $this->Form->input('password', array(
-	        	'label' => false,
-	        	'div' => 'controls',
-	        	'class' => 'input',
-	        	'placeholder' => 'Enter your password'
-	        ));
-        ?>
-	</div>
 
 	<div class="control-group">
         <?php
@@ -57,20 +29,48 @@
 	        ));
 	    ?>
 	</div>
-
+	
 	<div class="control-group">
         <?php
-        	echo $this->Form->label('image', 'Profile image', array(
+        	echo $this->Form->label('email', 'Email', array(
         		'class' => 'control-label'
         	));
-	        echo $this->Form->input('image', array(
+	        echo $this->Form->input('email', array(
 	        	'label' => false,
-	        	'type' => 'file',
 	        	'div' => 'controls',
 	        	'class' => 'input',
-	        	'placeholder' => 'Upload a profile image'
+	        	'placeholder' => 'Enter your email'
 	        ));
 	    ?>
+	</div>
+	    
+	<div class="control-group">
+        <?php
+        	echo $this->Form->label('password', 'Password', array(
+        		'class' => 'control-label'
+        	));
+	        echo $this->Form->input('password', array(
+	        	'label' => false,
+	        	'div' => 'controls',
+	        	'class' => 'input',
+	        	'placeholder' => 'Enter your password'
+	        ));
+        ?>
+	</div>
+	    
+	<div class="control-group">
+        <?php
+        	echo $this->Form->label('password_confirm', 'Password confirmation', array(
+        		'class' => 'control-label'
+        	));
+	        echo $this->Form->input('password_confirm', array(
+	        	'label' => false,
+	        	'type' => 'password',
+	        	'div' => 'controls',
+	        	'class' => 'input',
+	        	'placeholder' => 'Enter your password again'
+	        ));
+        ?>
 	</div>
         
     <div class="form-actions">

@@ -48,17 +48,17 @@ class UsersControllerTest extends ControllerTestCase {
 		$this->assertStringEndsWith('users/view', $this->headers['Location']);
 	}
 
-	// get: users/logout should redirect to users/login
+	// get: users/logout should redirect to front
 	public function testLogout() {
 		$response = $this->testAction('users/logout', array('method' => 'get'));
-		$this->assertStringEndsWith('users/login', $this->headers['Location']);
+		$this->assertStringEndsWith('Console/', $this->headers['Location']);
 	}
 
-	// post: users/register should redirect to users/login
+	// post: users/register should redirect to front
 	public function testRegister() {
 		$this->Users->User->expects($this->once())->method('save')->will($this->returnValue(true));
 		$response = $this->testAction('users/register', array('method' => 'post'));
-		$this->assertStringEndsWith('users/login', $this->headers['Location']);
+		$this->assertStringEndsWith('Console/', $this->headers['Location']);
 	}
 
 	// post: users/edit should redirect to users/view

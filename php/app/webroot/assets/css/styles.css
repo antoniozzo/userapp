@@ -417,22 +417,22 @@ h6 {
   color: #333333;
 }
 h1 {
-  font-size: 1.4444444444444444em;
-  line-height: 1em;
+  font-size: 1.2777777777777777em;
+  line-height: 1.1304347826086956em;
   margin-top: 0;
-  margin-bottom: 1em;
+  margin-bottom: 1.1304347826086956em;
 }
 h2 {
-  font-size: 1.3333333333333333em;
-  line-height: 1.0833333333333333em;
-  margin-top: 0;
-  margin-bottom: 1.0833333333333333em;
-}
-h3 {
   font-size: 1.2222222222222223em;
   line-height: 1.1818181818181819em;
   margin-top: 0;
   margin-bottom: 1.1818181818181819em;
+}
+h3 {
+  font-size: 1.1666666666666667em;
+  line-height: 1.2380952380952381em;
+  margin-top: 0;
+  margin-bottom: 1.2380952380952381em;
 }
 h4 {
   font-size: 1.1111111111111112em;
@@ -522,6 +522,11 @@ input[type=submit] {
 table {
   width: 100%;
 }
+h1,
+h2,
+h3 {
+  text-transform: uppercase;
+}
 .site {
   padding-top: 2.888888888888889em;
   position: relative;
@@ -579,6 +584,15 @@ table {
  * MODULES
  *
 \* --------------------------------------------- */
+.message {
+  padding-top: 1.4444444444444444em;
+  padding-right: 1.4444444444444444em;
+  padding-bottom: 1.4444444444444444em;
+  padding-left: 1.4444444444444444em;
+  border-bottom: 1px solid #DDDDDD;
+  margin: 0px;
+  text-align: center;
+}
 .icon {
   margin-right: 0.7222222222222222em;
   display: inline-block;
@@ -623,10 +637,21 @@ table {
 }
 .page-header {
   padding-bottom: 1.4444444444444444em;
+  display: table;
+  width: 100%;
   border-bottom: 1px solid #DDDDDD;
   margin: 0px;
 }
+.page-image,
+.page-title {
+  display: inline-block;
+  display: table-cell;
+  vertical-align: middle;
+}
 .page-image {
+  width: 60px;
+}
+.page-image img {
   -webkit-border-radius: 50%;
   -webkit-background-clip: padding-box;
   -moz-border-radius: 50%;
@@ -634,12 +659,16 @@ table {
   border-radius: 50%;
   background-clip: padding-box;
   margin-right: 0.7222222222222222em;
-  display: inline-block;
-  vertical-align: middle;
   width: 60px;
 }
+.page-header .icon {
+  display: inline-block;
+  display: table-cell;
+  vertical-align: middle;
+  width: 45px;
+}
 @media only screen and (min-width : 767px) {
-  .page-image {
+  .page-image img {
     width: 120px;
   }
 }
@@ -650,12 +679,13 @@ table {
   padding-left: 0.5777777777777778em;
   padding-left: 1.4444444444444444em;
   display: block;
-  color: #EEEEEE;
+  color: #DDDDDD;
   text-decoration: none;
 }
 .nav .current a {
   position: relative;
   background-color: #222222;
+  color: #FFFFFF;
 }
 .nav-section {
   padding-top: 0.5777777777777778em;
@@ -770,6 +800,10 @@ table {
 .controls input {
   height: 2.1666666666666665em;
   line-height: 2.1666666666666665em;
+}
+.error-message {
+  padding-top: 0.2888888888888889em;
+  font-style: italic;
 }
 @media only screen and (min-width : 767px) {
   .control-label,

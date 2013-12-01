@@ -45,6 +45,16 @@ class User extends AppModel {
 				'message' => 'This email is already registered here'
 	        )
 
+		),
+
+		'password' => array(
+
+			// password must match password_confirm
+			'isEqual' => array(
+				'rule' => array('isEqual', 'password_confirm'),
+				'message' => 'The password pair did not match'
+			)
+
 		)
 
 	);
@@ -82,5 +92,23 @@ class User extends AppModel {
 		
 		return true;
 	}
+	
+	/**
+	 * isEqual custom validation rule
+	 *
+	 * @param array $options
+	 * @return bool
+	 */
+	public function isEqual($check, $confirm)
+	{
+		foreach ($check as $field => $value) {
+			if (isset($this->data[$this->alias][$confirm]) && $value != $this->data[$this->alias][$confirm]) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 
 }

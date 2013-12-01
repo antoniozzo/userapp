@@ -12,7 +12,7 @@
 	<meta name="author" content="Antonio Rizzo">
 
 	<?php
-		$this->Html->meta('favicon.png', '/favicon.png', array('type' => 'icon', 'inline' => false));
+		$this->Html->meta('icon', '/assets/img/favicon.ico', array('inline' => false));
 		
 		$this->Html->css('/styles.min', null, array('inline' => false));
 
@@ -20,9 +20,14 @@
 		echo $this->fetch('css');
 	?>
 
-	<!--[if (gte IE 6)&(lte IE 8)]>
-		<link rel="stylesheet" href="/styles.ie.css" />
+	<!--[if lt IE 9]>
+		<?php echo $this->Html->css('/styles.ie'); ?>
 	<![endif]-->
+
+	<?php
+		echo $this->Html->script('http://code.jquery.com/jquery-latest.min.js');
+		echo $this->Html->script('/scripts.min');
+	?>
 
 </head>
 
@@ -51,23 +56,27 @@
 		<section class="site-content" role="main">
 			<div class="site-container">
 
-				<?php echo $this->Session->flash(); ?>
-
 				<div class="page">
 
 					<h1 class="page-header">
 
 						<?php if (isset($image_for_layout)) : ?>
-							<?php echo $this->Html->image($image_for_layout, array('class' => 'page-image')); ?>
+							<span class="page-image">
+								<?php echo $this->Html->image($image_for_layout); ?>
+							</span>
 						<?php endif; ?>
 
 						<?php if (isset($icon_for_layout)) : ?>
 							<span class="icon <?php echo $icon_for_layout; ?>-large"></span>
 						<?php endif; ?>
 
-						<?php echo $title_for_layout; ?>
+						<span class="page-title">
+							<?php echo $title_for_layout; ?>
+						</span>
 
 					</h1>
+					
+					<?php echo $this->Session->flash(); ?>
 
 					<div class="page-content">
 						<?php echo $this->fetch('content'); ?>
@@ -82,11 +91,6 @@
 		</section>
 
 	</div>
-
-	<?php
-		echo $this->Html->script('http://code.jquery.com/jquery-latest.min.js');
-		echo $this->Html->script('/scripts.min');
-	?>
 
 </body>
 </html>
